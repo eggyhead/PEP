@@ -1,0 +1,11 @@
+{
+  "name": "parkspecies",
+  "version": "1.0.0",
+  "description": "pep project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eweil505",
+  "license": "ISC"
+}
