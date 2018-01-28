@@ -28,13 +28,6 @@ export function fetchColors () {
 }
 
 
-export function getGreys() {
-  return axios.get('/api/greys')
-  .then(res => res.data)
-  .then(greys => dispatch(getColors(greys)))
-  .catch(err => console.log(err))
-}
-
 // REDUCER
 
 export default function reducer (state = [], action) {

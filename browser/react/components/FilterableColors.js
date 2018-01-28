@@ -15,7 +15,6 @@ class FilterableColors extends React.Component {
   }
   handleChange (evt) {
     const value = evt.target.value;
-    console.log('value ', value)
     this.setState({
       inputValue: value
     });
@@ -27,7 +26,6 @@ class FilterableColors extends React.Component {
         const inputValue = this.state.inputValue;
         const filteredColors = colors && colors.filter(color =>
         color.name.match(inputValue));
-        console.log(filteredColors, 'filteredColors' )
         return (
         <div>
             <input type="text" placeholder="placeholder" onChange={this.handleChange}></input>
@@ -44,7 +42,6 @@ class FilterableColors extends React.Component {
 
 
 const mapState = ({colors, color}) => {
-    console.log('in map state')
     return {
       colors: colors,
       color: color
@@ -61,9 +58,5 @@ const mapDispatch = (dispatch) => {
 
 export default connect(mapState, mapDispatch)(FilterableColors);
 
-//   const mapDispatch = (dispatch) => {
-//     return {
-        
-//     }
-//   }
+
 

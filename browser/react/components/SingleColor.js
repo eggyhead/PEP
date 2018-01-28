@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 class SingleColor extends Component  {
     constructor(props) {
         super(props)
-        console.log('props in component', this.props)
     }
 
     componentDidMount(props) {
@@ -14,7 +13,6 @@ class SingleColor extends Component  {
 
     render(props) {
         const {color} = this.props
-        console.log('color', color)
         return (
         <div>
             {color && color.name}

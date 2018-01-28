@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {withRouter, Switch, Route} from 'react-router-dom'
-import {fetchColors, fetchSingleColor} from '../../store'
-// import {ColorPicker} from './ColorPicker.js'
-// import {FilterableColors} from './AllColors.js'
-// import {SingleColor} from './SingleColor.js'
-// import {Grey} from './Grey.js'
-import {FilterableColors, SingleColor} from './index'
-//, ColorPicker, SingleColor, Grey}
+import {fetchColors} from '../../store'
+import {FilterableColors, SingleColor, Grey} from './index'
+
 class Main extends Component {
   constructor(props) {
     super(props)
@@ -23,6 +19,7 @@ class Main extends Component {
           <Switch>
             <Route exact path="/" component={FilterableColors} />
             <Route path="/color/:colorId" component={SingleColor} />
+            <Route path="/grey" component={Grey} />
           </Switch>
         </div>
       )
@@ -35,6 +32,7 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(fetchColors())
+
     }
   }
 }

@@ -15,9 +15,10 @@ import {
    */
   import colors from './colors'
   import color from './selectedColor'
+  import greys from './greys'
   
   const reducer = combineReducers({
-    colors, color
+    colors, color, greys
   });
   
   const store = createStore(
@@ -33,3 +34,4 @@ import {
   // export action creators
 export * from './colors'
 export * from './selectedColor'
+export * from './greys'
