@@ -24,7 +24,7 @@ class FilterableColors extends React.Component {
         const {colors, color, setColor} = this.props
         const inputValue = this.state.inputValue;
         const filteredColors = colors && colors.filter(color =>
-        color.name.match(inputValue));
+        color.name.toLowerCase().match(inputValue.toLowerCase()));
         return (
         <div className="container-fluid">
             <input type="text" placeholder="search by color name" onChange={this.handleChange}></input>
@@ -62,9 +62,3 @@ const mapDispatch = (dispatch) => {
 
 export default connect(mapState, mapDispatch)(FilterableColors);
 
-
-
-/**
- * <Link to={`/color/${color.colorId}`} onClick={(evt) => {setColor(evt, color)}}>
-                    </Link>
- */

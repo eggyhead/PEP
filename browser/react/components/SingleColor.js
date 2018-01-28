@@ -14,7 +14,12 @@ class SingleColor extends Component  {
     render(props) {
         const {color} = this.props
         return (
-        <ColorDisplay color={color}/>
+        <div className="singleColorContainer">
+            <h2>Single Color</h2>
+            <div>
+            <ColorDisplay color={color}/>
+            </div>
+        </div>
         )
     }
     
