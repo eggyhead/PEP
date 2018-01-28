@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import {fetchCategories} from '../../store'
-// import {GoogleApiWrapper} from 'google-maps-react'
-// import MapContainer from './MapContainer'
-
+import {withRouter, Switch, Route} from 'react-router-dom'
+import {fetchColors, fetchSingleColor} from '../../store'
+// import {ColorPicker} from './ColorPicker.js'
+// import {FilterableColors} from './AllColors.js'
+// import {SingleColor} from './SingleColor.js'
+// import {Grey} from './Grey.js'
+import {FilterableColors} from './index'
+//, ColorPicker, SingleColor, Grey}
 class Main extends Component {
   constructor(props) {
     super(props)
@@ -15,11 +18,11 @@ class Main extends Component {
   }
 
   render(props) {
-    console.log(this.props.categories, ' categories')
-    const categories = this.props.categories
       return (
         <div id="main" className="container-fluid">
-          
+          <Switch>
+            <Route exact path="/" component={FilterableColors} />
+          </Switch>
         </div>
       )
   } 
@@ -30,9 +33,15 @@ class Main extends Component {
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
-      dispatch(fetchCategories())
+      dispatch(fetchColors())
+      dispatch(fetchSingleColor())
     }
   }
 }
 export default withRouter(connect(null, mapDispatch)(Main))
 
+/**
+ *           <Route path="/colorInfo" component={ColorPicker}/>
+          <Route path="/singleColor/:colorId" component={SingleColor}/>
+          <Route path = "/grey" component={Grey} />
+ */

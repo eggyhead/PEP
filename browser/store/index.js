@@ -13,10 +13,11 @@ import {
    * so that we can cleverly use the shorthand notation in the object we
    * send to combineReducers
    */
-  import categories from './categories'
+  import colors from './colors'
+  import color from './selectedColor'
   
   const reducer = combineReducers({
-    categories
+    colors, color
   });
   
   const store = createStore(
@@ -30,4 +31,5 @@ import {
   export default store;
   
   // export action creators
-export * from './categories'
+export * from './colors'
+export * from './selectedColor'
