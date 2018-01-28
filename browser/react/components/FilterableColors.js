@@ -2,7 +2,7 @@ import React from 'react'
 import {changeColor} from '../../store'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
-import {SingleColor} from './index'
+import {SingleColor, ColorDisplay} from './index'
 
 class FilterableColors extends React.Component {
 
@@ -20,21 +20,25 @@ class FilterableColors extends React.Component {
     });
   }
 
-
     render (props) {
         const {colors, color, setColor} = this.props
         const inputValue = this.state.inputValue;
         const filteredColors = colors && colors.filter(color =>
         color.name.match(inputValue));
         return (
-        <div>
-            <input type="text" placeholder="placeholder" onChange={this.handleChange}></input>
-            {filteredColors && filteredColors.map(color => (
-              <div key={color.colorId}>
-                  <Link to={`/color/${color.colorId}`} onClick={(evt) => {setColor(evt, color)}}>{color.name}</Link>
-                </div>)
-            )
+        <div className="container-fluid">
+            <input type="text" placeholder="search by color name" onChange={this.handleChange}></input>
+            <div className="row">
+              {filteredColors && filteredColors.map(color => (
+                <div key={color.colorId} className="col-xs-6 col-md-3">
+                <Link to={`/colors/${color.colorId}`}>
+                   <ColorDisplay color={color}/> 
+                </Link>
+                </div>
+                )
+              )
                 }
+            </div>
         </div>
         )
     }
@@ -60,3 +64,7 @@ export default connect(mapState, mapDispatch)(FilterableColors);
 
 
 
+/**
+ * <Link to={`/color/${color.colorId}`} onClick={(evt) => {setColor(evt, color)}}>
+                    </Link>
+ */

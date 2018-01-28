@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {fetchSingleColor} from '../../store'
 import { connect } from 'react-redux'
-
+import {ColorDisplay} from './index'
 class SingleColor extends Component  {
     constructor(props) {
         super(props)
@@ -14,9 +14,7 @@ class SingleColor extends Component  {
     render(props) {
         const {color} = this.props
         return (
-        <div>
-            {color && color.name}
-        </div>
+        <ColorDisplay color={color}/>
         )
     }
     
