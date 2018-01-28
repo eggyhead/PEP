@@ -2,14 +2,13 @@
   "name": "restaurant-filter",
   "version": "1.0.0",
   "description": "A project to show how to filter data throughout the tech stack",
-  "main": "server/main.js",
+  "main": "index.js",
   "scripts": {
-    "start": "webpack -w & nodemon --watch server -e js,html server/main.js",
-    "test": "./node_modules/.bin/mocha server/**/*.test.js --reporter spec",
-    "test:player": "node_modules/.bin/testem",
-    "seed": "node ./bin/seed",
-    "db-init": "pg-init parkspecies",
-    "postinstall": "npm run db-init"
+    "start": "webpack -w & nodemon server --ignore /client --ignore /public",
+    "start-server": "nodemon server",
+    "build-client": "webpack",
+    "seed": "node seed.js",
+    "db-init": "pg-init colors"
   },
   "dependencies": {
     "axios": "^0.15.2",
@@ -28,6 +27,12 @@
     "pg-native": "^1.10.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "request": "^2.74.0",
     "sequelize": "^4.4.0",
     "serve-favicon": "^2.2.0",
@@ -46,5 +51,3 @@
     "webpack": "^2.2.1"
   }
 }
-
-

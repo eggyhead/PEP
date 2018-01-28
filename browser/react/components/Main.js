@@ -1,33 +1,38 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-const baseUrl = 'https://developers.zomato.com/api/v2.1/'
-let config = {
-  headers: {
-    'Accept': 'application/json',
-    'user-key': 'ed26eb5baaf6982b5ae868daa1047d12'
+import React, {Component} from 'react';
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {fetchCategories} from '../../store'
+// import {GoogleApiWrapper} from 'google-maps-react'
+// import MapContainer from './MapContainer'
+
+class Main extends Component {
+  constructor(props) {
+    super(props)
   }
+
+  componentDidMount(props) {
+    this.props.loadInitialData() 
+  }
+
+  render(props) {
+    console.log(this.props.categories, ' categories')
+    const categories = this.props.categories
+      return (
+        <div id="main" className="container-fluid">
+          
+        </div>
+      )
+  } 
+
 }
 
 
-export default class Main extends Component {
-
-  constructor (props) {
-    super(props);
-  }
-
-  componentDidMount () {
-    axios.get(baseUrl + '/categories', config)
-      .then(res => res.data)
-      .then(data => {
-        console.log(data)
-      });
-  }
-
-  render () {
-    return (
-      <div id="main" className="container-fluid">
-        Rendering main
-      </div>
-    );
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData() {
+      dispatch(fetchCategories())
+    }
   }
 }
+export default withRouter(connect(null, mapDispatch)(Main))
+

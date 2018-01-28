@@ -7,6 +7,12 @@
   
   #main {
     padding-left: 0; }
+
+  #map {
+      width: 100%;
+      height: 400px;
+      background-color: grey;
+    }
   
   sidebar {
     position: fixed;
