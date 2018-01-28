@@ -6,7 +6,7 @@ import {fetchColors, fetchSingleColor} from '../../store'
 // import {FilterableColors} from './AllColors.js'
 // import {SingleColor} from './SingleColor.js'
 // import {Grey} from './Grey.js'
-import {FilterableColors} from './index'
+import {FilterableColors, SingleColor} from './index'
 //, ColorPicker, SingleColor, Grey}
 class Main extends Component {
   constructor(props) {
@@ -22,6 +22,7 @@ class Main extends Component {
         <div id="main" className="container-fluid">
           <Switch>
             <Route exact path="/" component={FilterableColors} />
+            <Route path="/color/:colorId" component={SingleColor} />
           </Switch>
         </div>
       )
@@ -34,7 +35,6 @@ const mapDispatch = (dispatch) => {
   return {
     loadInitialData() {
       dispatch(fetchColors())
-      dispatch(fetchSingleColor())
     }
   }
 }

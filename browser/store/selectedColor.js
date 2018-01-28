@@ -1,15 +1,25 @@
+import axios from 'axios'
 // ACTION TYPES
 
-const CHANGE_COLOR = 'CHANGE_COLOR';
+const GET_COLOR = 'GET_COLOR';
 
 // ACTION CREATORS
 
 
-export function onChangeColor (color) {
-  const action = { type: CHANGE_COLOR, color};
+export function getColor (color) {
+  const action = { type: GET_COLOR, color};
   return action;
 }
 
+
+//THUNK CREATORS
+export function fetchSingleColor(id) {
+  return function(dispatch) {
+    axios.get(`/api/colors/${id}`)
+    .then(res => dispatch(getColor(res.data)))
+    .catch(err => console.log(err))
+  }
+}
 
 const initialState = {}
 // REDUCER
@@ -18,7 +28,7 @@ export default function reducer (state = initialState, action) {
 
   switch (action.type) {
 
-    case CHANGE_COLOR:
+    case GET_COLOR:
       return action.color;
 
     default:
