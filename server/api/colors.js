@@ -10,6 +10,7 @@ router.get('/', function (req, res, next) {
     .catch(next);
 });
 
+// GET api/colors/greys
 router.get('/greys', function(req, res, next) {
   Color.findAll({
     where: {
@@ -18,11 +19,11 @@ router.get('/greys', function(req, res, next) {
   })
   .then(greys => res.json(greys))
   .catch(next);
-});
+})
 
-
-  router.get('/:colorId', function(req, res, next) {
-    Color.findOne({
+//GET api/colors/:colorId
+router.get('/:colorId', function(req, res, next) {
+  Color.findOne({
       where: {
         colorId: req.params.colorId
       }
@@ -30,3 +31,8 @@ router.get('/greys', function(req, res, next) {
     .then(color => res.json(color))
     .catch(next);
   })
+
+
+
+
+

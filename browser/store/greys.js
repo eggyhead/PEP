@@ -13,15 +13,6 @@ export function getGreys (greys) {
 
 
 // THUNK CREATORS
-/**
- * export function fetchSingleColor(id) {
-  return function(dispatch) {
-    axios.get(`/api/colors/${id}`)
-    .then(res => dispatch(getColor(res.data)))
-    .catch(err => console.log(err))
-  }
-}
- */
 
 export function fetchGreys() {
   return function(dispatch) {
